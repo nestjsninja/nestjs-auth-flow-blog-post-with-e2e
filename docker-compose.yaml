@@ -1,0 +1,17 @@
+version: '3.3'
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:11-alpine
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: project
+      PGDATA: /data/postgres
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - '5432:5432'
+    restart: unless-stopped
