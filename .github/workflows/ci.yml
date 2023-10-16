@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [main]
 
+env:
+  NODE_VERSION: 19.0.1
+
 jobs:
   integration-test:
     runs-on: ubuntu-latest
@@ -29,10 +32,10 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js ${{ env.NODE_VERSION }}
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: ${{ env.NODE_VERSION }}
 
     - name: Install Dependencies
       run: yarn install --frozen-lockfile
