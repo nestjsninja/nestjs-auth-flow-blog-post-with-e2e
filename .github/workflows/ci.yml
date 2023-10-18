@@ -10,23 +10,8 @@ env:
   NODE_VERSION: 19.0.1
 
 jobs:
-  integration-test:
+  unit-test:
     runs-on: ubuntu-latest
-
-    services:
-      postgres:
-        image: postgres:15-alpine
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: root
-          POSTGRES_DB: tests
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
 
     steps:
     - name: Checkout repository
@@ -40,8 +25,6 @@ jobs:
     - name: Install Dependencies
       run: yarn install
 
-    - name: Integration testing
+    - name: Unit testing
       run: |
-        yarn test:e2e
-      env:
-        NODE_ENV: test
+        yarn test:unit

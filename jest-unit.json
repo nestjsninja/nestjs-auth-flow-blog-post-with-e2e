@@ -1,0 +1,9 @@
+{
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "rootDir": "./src/",
+  "testEnvironment": "node",
+  "testRegex": ".spec-unit.ts$",
+  "transform": {
+    "^.+\\.(t|j)s$": ["@swc/jest"]
+  }
+}
